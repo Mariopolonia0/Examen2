@@ -8,9 +8,15 @@
 
   <ItemGroup>
     <Folder Include="Entidades\" />
-    <Folder Include="BLL\" />
     <Folder Include="UI\" />
-    <Folder Include="DAL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.entityFrameworkCore.SQLite" Version="3.1.5" />
+    <PackageReference Include="microsoft.entityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
