@@ -14,7 +14,7 @@ namespace Examen1.DAL
             optionsBuilder.UseSqlite(@"Data Source= DATA\TeacherControl.db");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Nacionalidades>().HasData(new Nacionalidades
             {
@@ -22,5 +22,6 @@ namespace Examen1.DAL
                 Nacionalidad = "Dominicana"
             });
         }
+        */
     }
 }
