@@ -37,6 +37,8 @@ namespace Examen1
         {
             cpre c = new cpre();
             c.Show();
+
+
         }
     }
 }
