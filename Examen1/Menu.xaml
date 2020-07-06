@@ -1,12 +1,38 @@
-﻿<Window x:Class="Examen1.MainWindow"
+﻿<Window x:Class="Examen1.Menu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Examen1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="/Resources/Window.ico"
+        Title="Menu" Height="450" Width="800">
     <Grid>
+        <StackPanel>
+           
 
+            <StackPanel Orientation="Horizontal">
+               
+                <Button Click="Button_Click_1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/add.png"/>
+                        <Label Content="Registro" FontSize="15"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/add.png"/>
+                        <Label Content="Consulta" FontSize="15"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            
+            
+
+
+
+        </StackPanel>
     </Grid>
 </Window>
