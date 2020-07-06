@@ -21,6 +21,11 @@ namespace Examen1.UI.Registro
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 

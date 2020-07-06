@@ -23,8 +23,8 @@
 
             <Label Content="Fecha" FontSize="20"/>
             <DatePicker Name="FechaDatePicker" SelectedDate="{Binding Fecha}"/>
-            <Label Content="Decripcion" FontSize="20"/>
-
+            <Label Content="Decripcion Del Proyecto" FontSize="20"/>
+            <TextBox Width="600" Height="50" TextChanged="TextBox_TextChanged"/>
             <GroupBox>
                 <StackPanel Orientation="Horizontal">
      
