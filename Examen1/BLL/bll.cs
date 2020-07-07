@@ -1,28 +1,30 @@
-﻿using System;
+﻿using Examen1.DAL;
+using Examen2.Entidades;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Examen1.BLL
 {
     class bll
     {
-        /*
-         * 
-         class MoraBLL
-    {
-        public static bool Guardar(Mora mora)
+        
+        public static bool Guardar(Proyecto proyecto)
         {
-            if (!Existe(mora.MoraId))//si no existe insertamos
-                return Insertar(mora);
+            if (!Existe(proyecto.proyectoId))//si no existe insertamos
+                return Insertar(proyecto);
             else
-                return Modificar(mora);
+                return Modificar(proyecto);
         }
 
         /// <summary>
         /// Permite guardar una entidad en la base de datos
         /// </summary>
         /// <param name="tarea">La entidad que se desea guardar</param>
-        private static bool Insertar(Mora mora)
+        private static bool Insertar(Proyecto proyecto)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -30,7 +32,7 @@ namespace Examen1.BLL
             try
             {
                 //Agregar la entidad que se desea insertar al contexto
-                contexto.Mora.Add(mora);
+                contexto.Proyecto.Add(proyecto);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -44,7 +46,7 @@ namespace Examen1.BLL
             return paso;
         }
 
-        private static bool Modificar(Mora mora)
+        private static bool Modificar(Proyecto proyecto)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -52,15 +54,15 @@ namespace Examen1.BLL
             try
             {
                 //busca la entidad en la base de datos y la elimina
-                contexto.Database.ExecuteSqlRaw($"Delete FROM TareasDetalle Where TareaId={mora.MoraId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM TareasDetalle Where TareaId={proyecto.proyectoId}");
 
-                foreach (var item in mora.Detalle)
+                foreach (var item in proyecto.descripcionproyecto)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                 }
 
                 //marcar la entidad como modificada para que el contexto sepa como proceder
-                contexto.Entry(mora).State = EntityState.Modified;
+                contexto.Entry(proyecto).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -82,11 +84,11 @@ namespace Examen1.BLL
             try
             {
                 //buscar la entidad que se desea eliminar
-                var tarea = MoraBLL.Buscar(id);
+                var tarea = bll.Buscar(id);
 
                 if (tarea != null)
                 {
-                    contexto.Mora.Remove(tarea); //remover la entidad
+                    contexto.Proyecto.Remove(tarea); //remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
 
@@ -102,15 +104,15 @@ namespace Examen1.BLL
             return paso;
         }
 
-        public static Mora Buscar(int id)
+        public static Proyecto Buscar(int id)
         {
-            Mora tarea = new Mora();
+            Proyecto tarea = new Proyecto();
             Contexto contexto = new Contexto();
 
             try
             {
-                tarea = contexto.Mora.Include(x => x.Detalle)
-                    .Where(x => x.MoraId == id)
+                tarea = contexto.Proyecto.Include(x => x.descripcionproyecto)
+                    .Where(x => x.proyectoId == id)
                     .SingleOrDefault();
             }
             catch (Exception)
@@ -124,15 +126,15 @@ namespace Examen1.BLL
             return tarea;
         }
 
-        public static List<Mora> GetList(Expression<Func<Mora, bool>> criterio)
+        public static List<Proyecto> GetList(Expression<Func<Proyecto, bool>> criterio)
         {
-            List<Mora> Lista = new List<Mora>();
+            List<Proyecto> Lista = new List<Proyecto>();
             Contexto contexto = new Contexto();
 
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                Lista = contexto.Mora.Where(criterio).ToList();
+                Lista = contexto.Proyecto.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -152,7 +154,7 @@ namespace Examen1.BLL
 
             try
             {
-                encontrado = contexto.Mora.Any(e => e.MoraId == id);
+                encontrado = contexto.Proyecto.Any(e => e.proyectoId == id);
             }
             catch (Exception)
             {
@@ -168,8 +170,8 @@ namespace Examen1.BLL
 
 
 
-    } 
-         * */
+     
+     
 
 
     }

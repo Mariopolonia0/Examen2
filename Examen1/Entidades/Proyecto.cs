@@ -11,10 +11,7 @@ namespace Examen2.Entidades
         [Key]
         public int proyectoId { get; set; }
         public DateTime fecha { get; set; }
-        public string descripcionproyecto { get; set; }
-
-        [ForeignKey("tipoId")]
-        public List<TareaDetalle> Detalle { get; set; } = new List<TareaDetalle>();
+        public string descripcionproyecto { get; set; } 
     }
 
     public class TareaDetalle
@@ -24,12 +21,7 @@ namespace Examen2.Entidades
         public string requerimiento { get; set; }
         public int tiempo { get; set; }
 
-        public TareaDetalle(string TipoTarea, string Requerimiento, int Tiempo)
-        {
-            tipoId = 0;
-            tipoTarea = TipoTarea;
-            requerimiento = Requerimiento;
-            tiempo = Tiempo;
-        }
+        [ForeignKey("tipoId")]
+        public List<TareaDetalle> Detalle { get; set; } = new List<TareaDetalle>();
     }
 }
