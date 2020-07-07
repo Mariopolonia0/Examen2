@@ -13,7 +13,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="IdTextBox" Text="{Binding id}" Width="100" Height="18"/>
-                <Button x:Name="BuscarBoton">
+                <Button x:Name="BuscarBoton" Click="BuscarBoton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png"/>
                         <Label Content="Buscar"/>
@@ -40,7 +40,7 @@
 
                     <StackPanel Margin="5,0">
                         <Label Content="Requerimiento De La Tarea" />
-                        <TextBox x:Name="requisitoTareaTextBox" Width="150" Height="20" Text="{Binding requerimiento}"/>
+                        <TextBox x:Name="requerimientoTareaTextBox" Width="150" Height="20" Text="{Binding requerimiento}"/>
                     </StackPanel>
                     
                     <StackPanel  Margin="5,0">
@@ -49,7 +49,7 @@
                     </StackPanel>
                     
                     <StackPanel  Margin="5,15" >
-                        <Button  >
+                        <Button x:Name="Agregarboton" Click="Agregarboton_Click" >
                             <StackPanel  Orientation="Horizontal">
                                 <Image Source="/resources/agregar.png"/>
                                 <Label Content="Agregar" />
@@ -68,13 +68,13 @@
                 <DataGrid x:Name="DetalleDataGrid" Height="100" AutoGenerateColumns="False" ItemsSource="{Binding Detalle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Tipo Id" Binding="{Binding tipoId}"/>
-                        <DataGridTextColumn Header="Tipo Tarea" Binding="{Binding tipoTarea}"/>
+                        <DataGridTextColumn Header="Tipo Tarea" Binding="{Binding proyectos.tipoTarea}"/>
                         <DataGridTextColumn Header="Requerimiento" Binding="{Binding requerimiento}"/>
                         <DataGridTextColumn Header="Tiempo" Binding="{Binding tiempo}"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button Height="30" Width="200" HorizontalAlignment="Right">
+                <Button x:Name="EliminarFilaboton" Height="30" Width="200" HorizontalAlignment="Right" Click="EliminarFilaboton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/resources/EliminarT.png"/>
                         <Label Content="Eliminar Fila Selecionada" />
@@ -92,13 +92,13 @@
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="GuardarButton"   Margin="5,0" >
+                <Button x:Name="GuardarButton"   Margin="5,0" Click="GuardarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar.png"/>
                         <Label Content="Guardar" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="EliminarButton"  Margin="5,0" >
+                <Button x:Name="EliminarButton"  Margin="5,0" Click="EliminarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/EliminarT.png"/>
                         <Label Content="Eliminar" />

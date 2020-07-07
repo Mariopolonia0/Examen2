@@ -1,4 +1,5 @@
-﻿using Examen2.Entidades;
+﻿using Examen1.BLL;
+using Examen2.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Examen1.UI.Registro
     public partial class rProyecto : Window
     {
         private Proyectos proyecto = new Proyectos();
+        private TareaDetalle detalle { get; set; }
         public rProyecto()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace Examen1.UI.Registro
         {
             this.proyecto = new Proyectos();
             this.DataContext = proyecto;
+         
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -42,77 +45,58 @@ namespace Examen1.UI.Registro
             Limpiar();
         }
 
-        
-    }
-}
-
-
-
-/*
- 
-     
-
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void BuscarBoton_Click(object sender, RoutedEventArgs e)
         {
-            Tareas encontrado = TareasBLL.Buscar(Tarea.TareaId);
+            Proyectos encontrado = bll.Buscar(proyecto.proyectoId);
 
-            if(encontrado != null)
+            if (encontrado != null)
             {
-                Tarea = encontrado;
+                proyecto = encontrado;
                 Cargar();
                 MessageBox.Show("Tarea encontrada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 Limpiar();
-                MessageBox.Show("Tarea no existe en la base de datos","Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Tarea no existe en la base de datos", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        private void Agregarboton_Click(object sender, RoutedEventArgs e)
         {
-            Limpiar();
-        }
-
-        private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
-        {
-            Tarea.Detalle.Add(new TareasDetalle(Tarea.TareaId, RequerimientoTextBox.Text, Convert.ToSingle(ValorTextBox.Text)));
+            proyecto.Detalle.Add(new TareaDetalle());
 
             Cargar();
 
-            RequerimientoTextBox.Clear();
-            ValorTextBox.Clear();
+            requerimientoTareaTextBox.Clear();
+            minutoTextBox.Clear();
+           
+            
         }
 
-        private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
+        private void EliminarFilaboton_Click(object sender, RoutedEventArgs e)
         {
-            if(DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
+            if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
             {
-                Tarea.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                proyecto.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 Cargar();
             }
-        }
 
-        private bool ExisteEnLaBaseDeDatos()
-        {
-            Tareas esValido = TareasBLL.Buscar(Tarea.TareaId);
-
-            return (esValido != null);
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            if (Tarea.TareaId == 0)
+            if (proyecto.proyectoId == 0)
             {
-                paso = TareasBLL.Guardar(Tarea);
+                paso = bll.Guardar(proyecto);
             }
             else
             {
                 if (ExisteEnLaBaseDeDatos())
                 {
-                    paso = TareasBLL.Guardar(Tarea);
+                    paso = bll.Guardar(proyecto);
                 }
                 else
                 {
@@ -127,26 +111,32 @@ namespace Examen1.UI.Registro
             }
             else
                 MessageBox.Show("Fallo al guardar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+        
+        }
+
+        private bool ExisteEnLaBaseDeDatos()
+        {
+            Proyectos esValido = bll.Buscar(proyecto.proyectoId);
+
+            return (esValido != null);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            Tareas existe = TareasBLL.Buscar(Tarea.TareaId);
 
-            if(existe == null)
+            Proyectos existe = bll.Buscar(proyecto.proyectoId);
+
+            if (existe == null)
             {
-                MessageBox.Show("No existe la tarea en la base de datos","Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No existe la tarea en la base de datos", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else 
+            else
             {
-                TareasBLL.Eliminar(Tarea.TareaId);
+                bll.Eliminar(proyecto.proyectoId);
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
         }
-
-
     }
-     
-     */
+}

@@ -107,13 +107,13 @@ namespace Examen1.BLL
 
         public static Proyectos Buscar(int id)
         {
-            Proyectos tarea = new Proyectos();
+            Proyectos project = new Proyectos();
             Contexto contexto = new Contexto();
 
             try
             {
-                tarea = contexto.Proyecto.Include(x => x.descripcionproyecto)
-                    .Where(x => x.proyectoId == id)
+                project = contexto.Proyecto.Where(p => p.proyectoId == id)
+                    .Include(p => p.Detalle).ThenInclude(d => d.proyectos)
                     .SingleOrDefault();
             }
             catch (Exception)
@@ -124,7 +124,7 @@ namespace Examen1.BLL
             {
                 contexto.Dispose();
             }
-            return tarea;
+            return project;
         }
 
         public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
@@ -168,12 +168,6 @@ namespace Examen1.BLL
 
             return encontrado;
         }
-
-
-
-     
-     
-
 
     }
 }

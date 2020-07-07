@@ -27,5 +27,7 @@ namespace Examen2.Entidades
         public int tiempo { get; set; }
         public Proyectos proyectos { get; set; } = new Proyectos(); 
 
+       
+
     }
 }
