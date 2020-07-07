@@ -32,6 +32,34 @@ namespace Examen2.Migrations
 
                     b.ToTable("Proyectos");
                 });
+
+            modelBuilder.Entity("Examen2.Entidades.TareaDetalle", b =>
+                {
+                    b.Property<int>("tipoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("requerimiento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("tiempo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("tipoTarea")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("tipoId");
+
+                    b.ToTable("TareaDetalle");
+                });
+
+            modelBuilder.Entity("Examen2.Entidades.TareaDetalle", b =>
+                {
+                    b.HasOne("Examen2.Entidades.Proyectos", "proyectos")
+                        .WithMany("Detalle")
+                        .HasForeignKey("tipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 #pragma warning restore 612, 618
         }
     }

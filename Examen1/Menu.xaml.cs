@@ -29,14 +29,14 @@ namespace Examen1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            rpre r = new rpre();
-            r.Show();
+            cpre c = new cpre();
+            c.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            cpre c = new cpre();
-            c.Show();
+            rProyecto registroproyecto = new rProyecto();
+            registroproyecto.Show();
 
 
         }

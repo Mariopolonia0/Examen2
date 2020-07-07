@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Examen2.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,17 +16,33 @@ namespace Examen1.UI.Registro
     /// <summary>
     /// Interaction logic for rpre.xaml
     /// </summary>
-    public partial class rpre : Window
+    public partial class rProyecto : Window
     {
-        public rpre()
+        private Proyectos proyecto = new Proyectos();
+        public rProyecto()
         {
             InitializeComponent();
+            this.DataContext = proyecto;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Cargar()
         {
-
+            this.DataContext = null;
+            this.DataContext = proyecto;
         }
+
+        private void Limpiar()
+        {
+            this.proyecto = new Proyectos();
+            this.DataContext = proyecto;
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
+
+        
     }
 }
 
@@ -33,27 +50,7 @@ namespace Examen1.UI.Registro
 
 /*
  
-      public partial class rTareas : Window
-    {
-        private Tareas Tarea = new Tareas();
-
-        public rTareas()
-        {
-            InitializeComponent();
-            this.DataContext = Tarea;
-        }
-
-        private void Cargar()
-        {
-            this.DataContext = null;
-            this.DataContext = Tarea;
-        }
-
-        private void Limpiar()
-        {
-            this.Tarea = new Tareas();
-            this.DataContext = Tarea;
-        }
+     
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {

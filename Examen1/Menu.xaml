@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Examen1"
         mc:Ignorable="d"
         Icon="/Resources/Window.ico"
-        Title="Menu" Height="450" Width="800">
+        Title="Menu" Height="241" Width="250">
     <Grid>
         <StackPanel>
-           
+
 
             <StackPanel Orientation="Horizontal">
-               
+
                 <Button Click="Button_Click_1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/add.png"/>
@@ -28,8 +28,8 @@
                 </Button>
 
             </StackPanel>
-            
-            
+
+
 
 
 
