@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Examen1.BLL
 {
     class bll
     {
         
-        public static bool Guardar(Proyecto proyecto)
+        public static bool Guardar(Proyectos proyecto)
         {
             if (!Existe(proyecto.proyectoId))//si no existe insertamos
                 return Insertar(proyecto);
@@ -24,7 +25,7 @@ namespace Examen1.BLL
         /// Permite guardar una entidad en la base de datos
         /// </summary>
         /// <param name="tarea">La entidad que se desea guardar</param>
-        private static bool Insertar(Proyecto proyecto)
+        private static bool Insertar(Proyectos proyecto)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -46,7 +47,7 @@ namespace Examen1.BLL
             return paso;
         }
 
-        private static bool Modificar(Proyecto proyecto)
+        private static bool Modificar(Proyectos proyecto)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -84,11 +85,11 @@ namespace Examen1.BLL
             try
             {
                 //buscar la entidad que se desea eliminar
-                var tarea = bll.Buscar(id);
+                Proyectos proyecto = bll.Buscar(id);
 
-                if (tarea != null)
+                if (proyecto != null)
                 {
-                    contexto.Proyecto.Remove(tarea); //remover la entidad
+                    contexto.Proyecto.Remove(proyecto); //remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
 
@@ -104,9 +105,9 @@ namespace Examen1.BLL
             return paso;
         }
 
-        public static Proyecto Buscar(int id)
+        public static Proyectos Buscar(int id)
         {
-            Proyecto tarea = new Proyecto();
+            Proyectos tarea = new Proyectos();
             Contexto contexto = new Contexto();
 
             try
@@ -126,9 +127,9 @@ namespace Examen1.BLL
             return tarea;
         }
 
-        public static List<Proyecto> GetList(Expression<Func<Proyecto, bool>> criterio)
+        public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
         {
-            List<Proyecto> Lista = new List<Proyecto>();
+            List<Proyectos> Lista = new List<Proyectos>();
             Contexto contexto = new Contexto();
 
             try

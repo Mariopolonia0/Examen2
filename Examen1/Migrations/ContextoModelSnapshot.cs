@@ -16,7 +16,7 @@ namespace Examen2.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5");
 
-            modelBuilder.Entity("Examen2.Entidades.Proyecto", b =>
+            modelBuilder.Entity("Examen2.Entidades.Proyectos", b =>
                 {
                     b.Property<int>("proyectoId")
                         .ValueGeneratedOnAdd()
@@ -30,7 +30,7 @@ namespace Examen2.Migrations
 
                     b.HasKey("proyectoId");
 
-                    b.ToTable("Proyecto");
+                    b.ToTable("Proyectos");
                 });
 #pragma warning restore 612, 618
         }

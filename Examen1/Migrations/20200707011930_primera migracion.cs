@@ -8,7 +8,7 @@ namespace Examen2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Proyecto",
+                name: "Proyectos",
                 columns: table => new
                 {
                     proyectoId = table.Column<int>(nullable: false)
@@ -18,14 +18,14 @@ namespace Examen2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proyecto", x => x.proyectoId);
+                    table.PrimaryKey("PK_Proyectos", x => x.proyectoId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Proyecto");
+                name: "Proyectos");
         }
     }
 }

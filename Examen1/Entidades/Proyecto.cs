@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Examen2.Entidades
 {
-    public class Proyecto
+    public class Proyectos
     {
         [Key]
         public int proyectoId { get; set; }
@@ -22,6 +22,6 @@ namespace Examen2.Entidades
         public int tiempo { get; set; }
 
         [ForeignKey("tipoId")]
-        public List<TareaDetalle> Detalle { get; set; } = new List<TareaDetalle>();
+        public Proyectos proyectos { get; set; } = new Proyectos(); 
     }
 }

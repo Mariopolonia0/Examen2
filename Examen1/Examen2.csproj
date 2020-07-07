@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200707000222_primera migracion.cs" />
-    <Compile Remove="Migrations\20200707000222_primera migracion.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Resources\add.png" />
     <None Remove="Resources\agregar.png" />
     <None Remove="Resources\Buscar.png" />
